@@ -1,9 +1,24 @@
 <template>
-    <div>
-        <p v-for="book of books" :key="book.id">
-            {{ book.title }}
-            <button @click="removeBook(book)">Remove</button>
-        </p>
+    <div class="reading-list">
+        <section>
+            <router-link class="back" to="/">
+                <img src="../assets/west_black_24dp.svg" alt="" />
+            </router-link>
+            <br />
+            <br />
+
+            <h1>Reading List</h1>
+            <article>
+                <div v-for="book of books" :key="book.id">
+                    <h1>
+                        {{ book.title }}
+                        <span>{{ book.author }}</span>
+                    </h1>
+
+                    <button @click="removeBook(book)">Remove</button>
+                </div>
+            </article>
+        </section>
     </div>
 </template>
 
@@ -11,32 +26,18 @@
 export default {
     data() {
         return {
-            books: [
-                {
-                    id: "1",
-                    title: "Goodnight Moon",
-                    author: "Margaret Wise Brown",
-                    publisher: "Harper Festival",
-                    year: "1947",
-                    pages: "30",
-                    plot: "In a soothing, repetitive tone, a young rabbit says goodnight to all the things in the room. Instead of plot, Goodnight Moon looks at the world from the eyes of a very young child, calming children with the ritual of naming each object around them. Lulling babies to sleep since 1947, this classic still ranks on bestseller lists, with some estimates of all-time copies sold worldwide topping 48 million. Find out more of the best books to help your child fall asleep.",
-                    audciance: "1 - 4 years",
-                    bookColor: "blue"
-                },
-            ],
-            // readingList: null
+            books: [],
         };
     },
 
     methods: {
-        removeBook(book){
-            const index = this.books.indexOf(book)
-            this.books.splice(index, 1)
+        removeBook(book) {
+            const index = this.books.indexOf(book);
+            this.books.splice(index, 1);
 
             localStorage.setItem("books", JSON.stringify(this.books));
         },
     },
-
 
     created() {
         let storedBooks = localStorage.getItem("books");
@@ -44,9 +45,47 @@ export default {
         if (storedBooks) {
             this.books = JSON.parse(storedBooks);
         }
-
     },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.reading-list {
+    margin: 0;
+    height: 100vh;
+    background-color: #222;
+    display: flex;
+    section {
+        width: 50%;
+        margin: auto;
+
+        h1 {
+            color: white;
+        }
+    }
+    .back {
+        background-color: #333;
+        height: fit-content;
+        padding: 1rem 0.5rem 0.25rem 0.5rem;
+        border-radius: 50%;
+    }
+    article {
+        background-color: #333;
+        padding: 2rem;
+
+        div {
+            color: white;
+            padding: 1rem;
+            border-bottom: 1px solid white;
+            display: flex;
+            justify-content: space-between;
+            h1 {
+                span {
+                    font-size: 1rem;
+                    color: lightgrey;
+                }
+            }
+        }
+    }
+}
+</style>
