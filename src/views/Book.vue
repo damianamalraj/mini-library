@@ -49,11 +49,11 @@
 </template>
 
 <script>
-import Library from "../assets/library.json";
+
 export default {
     data() {
         return {
-            library: [...Library],
+            library: [...this.$store.state.library],
             readingList: [
                 {
                     id: "1",
