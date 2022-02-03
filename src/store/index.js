@@ -9,7 +9,9 @@ export default new Vuex.Store({
     name: 'Kalle Olofsson',
     todos: [], // {id,content,done}
     showDone: true,
-    library: [...Library] //library har importerats
+    library: [...Library], //library har importerats
+    book: '',
+    readingList: []
   },
 
   mutations: {
@@ -17,13 +19,12 @@ export default new Vuex.Store({
       state.name = payload
     },
 
-    addTodo(state, content){
-      const todo = {
-        id: String(Math.floor(Math.random()*Math.pow(10,10)))+Date.now(),
-        content,
-        done: Math.random() > 0.5
-      }
-      state.todos.push(todo)
+    addToReadingList(state, book){
+      state.readingList.push(book)
+    },
+
+    deleteFromReadingList(state, book){
+        state.book = book
     },
 
     toggleDone(state){

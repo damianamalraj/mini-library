@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p v-for="book of books" :key="book.id">
+        <p v-for="book of readingList" :key="book.id">
             {{ book.title }}
             <button @click="removeBook(book.id)">Remove</button>
         </p>
@@ -12,15 +12,17 @@ export default {
     data() {
         return {
             books: null,
+            readingList: this.$store.state.readingList
         };
     },
 
     methods: {
         removeBook(bookId){
-            const index = this.books.indexOf(bookId)
-            this.books.splice(index, 1)
-        }
+            const index = this.readingList.indexOf(bookId)
+            this.readingList.splice(index, 1)
+        },
     },
+
 
     created() {
         let storedBooks = localStorage.getItem("books");
@@ -28,6 +30,7 @@ export default {
         if (storedBooks) {
             this.books = JSON.parse(storedBooks);
         }
+
     },
 };
 </script>

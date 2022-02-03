@@ -43,6 +43,7 @@
                 </div>
                 <br />
                 <button @click="handler(book)">Oh, I want to read it!</button>
+                <button @click="addToReadingList">Vuex readinglist test</button>
             </section>
         </div>
     </div>
@@ -54,7 +55,10 @@ export default {
     data() {
         return {
             library: [...this.$store.state.library],
-            readingList: [
+            readingList: [...this.$store.state.readingList],
+           
+           /*
+           readingList: [
                 {
                     id: "1",
                     title: "Goodnight Moon",
@@ -67,6 +71,7 @@ export default {
                     bookColor: "blue",
                 },
             ],
+            */
         };
     },
     created() {
@@ -76,13 +81,25 @@ export default {
             this.readingList = JSON.parse(storedBooks);
         }
     },
+
     methods: {
         handler(book) {
+            /*
             if(!this.readingList.includes(book)) {
                 this.readingList.push(book);      
                 localStorage.setItem("books", JSON.stringify(this.readingList));
             }
+            */
+            const bookId = this.readingList.find(id => id == book.id)
+            if(!bookId){
+                this.readingList.push(book);      
+                localStorage.setItem("books", JSON.stringify(this.readingList));
+            }
         },
+
+        addToReadingList(){
+            this.$store.state.readingList.push(this.book)
+        }
     },
 
     computed: {
