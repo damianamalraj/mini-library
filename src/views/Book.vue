@@ -78,8 +78,10 @@ export default {
     },
     methods: {
         handler(book) {
-            this.readingList.push(book);
-            localStorage.setItem("books", JSON.stringify(this.readingList));
+            if(!this.readingList.includes(book)) {
+                this.readingList.push(book);      
+                localStorage.setItem("books", JSON.stringify(this.readingList));
+            }
         },
     },
 
@@ -169,6 +171,10 @@ section:nth-of-type(2) {
         padding: 0.9rem;
         border-radius: 8px;
         border: none;
+    }
+
+    button:active {
+        background-color: gray;
     }
 }
 </style>
