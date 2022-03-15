@@ -50,15 +50,13 @@
 </template>
 
 <script>
-
 export default {
     data() {
         return {
             library: [...this.$store.state.library],
             //readingList: [...this.$store.state.readingList],
-           
 
-           readingList: [
+            readingList: [
                 {
                     id: "1",
                     title: "Goodnight Moon",
@@ -71,7 +69,6 @@ export default {
                     bookColor: "blue",
                 },
             ],
-
         };
     },
     created() {
@@ -84,17 +81,17 @@ export default {
 
     methods: {
         handler(book) {
-                if(!this.readingList.includes(book)) {
-                this.readingList.push(book);      
+            if (!this.readingList.includes(book)) {
+                this.readingList.push(book);
                 localStorage.setItem("books", JSON.stringify(this.readingList));
             }
         },
 
-        addToReadingList(){
-            if(!this.readingList.includes(this.book)){
-                this.readingList.push(this.book)
+        addToReadingList() {
+            if (!this.readingList.includes(this.book)) {
+                this.readingList.push(this.book);
             }
-        }
+        },
     },
 
     computed: {
@@ -115,7 +112,8 @@ export default {
     display: flex;
     align-items: center;
     .back {
-        background-color: #333;
+        background-color: white;
+
         height: fit-content;
         padding: 0.35rem 0.5rem;
         border-radius: 50%;

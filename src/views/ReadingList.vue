@@ -64,7 +64,7 @@ export default {
         }
     }
     .back {
-        background-color: #333;
+        background-color: white;
         height: fit-content;
         padding: 1rem 0.5rem 0.25rem 0.5rem;
         border-radius: 50%;

@@ -9,8 +9,13 @@ export default {};
 </script>
 
 <style lang="scss">
+html,
+body {
+    height: 100%;
+}
 body {
     margin: 0;
+    background-color: #222;
 }
 
 #app {

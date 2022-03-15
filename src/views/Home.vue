@@ -6,6 +6,7 @@
                 >Reading List</router-link
             >
         </header>
+
         <main>
             <div class="book">
                 <router-link
@@ -34,7 +35,6 @@
 </template>
 
 <script>
-
 export default {
     data() {
         return {
@@ -45,19 +45,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+html,
+body {
+    height: 100%;
+}
+.home {
+    background-color: #222;
+}
+
+h1 {
+    color: white;
+}
 header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     .reading-list {
-        background-color: coral;
+        background-color: white;
         padding: 1rem;
         border: none;
         font-size: 1rem;
         border-radius: 1rem;
         height: fit-content;
         text-decoration: none;
-        color: white;
+        color: black;
     }
 }
 main {
@@ -65,6 +76,7 @@ main {
     margin: auto;
 }
 .book {
+    margin-top: 2.5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
